@@ -5,6 +5,7 @@ import model.EBook;
 import model.PrintedBook;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -46,6 +47,14 @@ public class BookDaoSQLite {
                 }
             }
         return books;
+        }
+
+        public List<Book> selectAllBooks() throws SQLException {
+
+            PreparedStatement preparedSelect = connection.prepareStatement("SELECT * FROM Books");
+            ResultSet resultSet = preparedSelect.executeQuery();
+
+            return fillBooksList(resultSet);
         }
 
 
