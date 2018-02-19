@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookDaoSQLite {
+public class BookDaoSQLite implements BookDao{
 
     private Connection connection;
 
