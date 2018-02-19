@@ -20,6 +20,9 @@ public class RootController {
                 case "1":
                     bookController.showBooks();
                     break;
+                case "2":
+                    bookController.insertBook();
+                    break;
             }
         }
     }

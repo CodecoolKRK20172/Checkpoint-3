@@ -27,5 +27,15 @@ public class BaseView {
         System.out.println(msg);
     }
 
-    //public Book getBookInput(){}
+    public Book getBookInput() {
+
+        int ISBN = Integer.parseInt(getInput("Enter ISBN: "));
+        String title = getInput("Enter title: ");
+        int authorId = Integer.parseInt(getInput("Enter author ID"));
+        String publisher = getInput("Enter publisher: ");
+        int publicationYear = Integer.parseInt(getInput("Enter publication year: "));
+        int price = Integer.parseInt(getInput("Enter price: "));
+
+        return new Book(ISBN, authorId, title, publisher, publicationYear,price);
+    }
 }

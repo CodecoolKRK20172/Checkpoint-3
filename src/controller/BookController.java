@@ -21,4 +21,17 @@ public class BookController {
             e.printStackTrace();
         }
     }
+
+    void insertBook() {
+        Book bookToAdd = view.getBookInput();
+        int result =0;
+        try {
+            result = dao.insertBook(bookToAdd);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        String status = result > 0 ? "Book inserted" : "Book not inserted" ;
+        view.printMsg(status);
+    }
 }

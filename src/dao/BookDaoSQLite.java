@@ -57,6 +57,19 @@ public class BookDaoSQLite implements BookDao{
             return fillBooksList(resultSet);
         }
 
+        public int insertBook(Book book) throws SQLException {
+        PreparedStatement preparedInsert = connection.prepareStatement("INSERT INTO Books(ISBN, author, title, publisher, publication_year, price) VALUES (?,?,?,?,?,?)");
+
+        preparedInsert.setInt(1, book.getISBN());
+        preparedInsert.setInt(2,book.getAuthorId());
+        preparedInsert.setString(3, book.getTitle());
+        preparedInsert.setString(4, book.getPublisher());
+        preparedInsert.setInt(5,book.getPublicationYear());
+        preparedInsert.setInt(6, book.getPrice());
+
+        return preparedInsert.executeUpdate();
+        }
+
 
 
 }
