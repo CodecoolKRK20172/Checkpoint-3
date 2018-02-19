@@ -2,15 +2,15 @@ package model;
 
 public class Book {
     private int ISBN;
-    private String author;
+    private int authorId;
     private String title;
     private String publisher;
     private int publicationYear;
     private int price;
 
-    public Book(int ISBN, String author, String title, String publisher, int publicationYear, int price) {
+    public Book(int ISBN, int authorId, String title, String publisher, int publicationYear, int price) {
     this.ISBN = ISBN;
-    this.author = author;
+    this.authorId = authorId;
     this.title = title;
     this.publisher = publisher;
     this.publicationYear = publicationYear;
@@ -18,7 +18,7 @@ public class Book {
     }
 
     public String getFullBookInfo(){
-        return String.format("%s: %s", author, title);
+        return String.format("%s: %d", title, authorId);
     }
 
 
@@ -26,8 +26,8 @@ public class Book {
         return ISBN;
     }
 
-    public String getAuthor() {
-        return author;
+    public int getAuthorId() {
+        return authorId;
     }
 
     public String getTitle() {
