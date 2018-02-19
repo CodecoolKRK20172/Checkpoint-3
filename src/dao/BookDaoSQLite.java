@@ -77,7 +77,7 @@ public class BookDaoSQLite implements BookDao{
 
         public int deleteByTitle(String input) throws SQLException {
 
-        PreparedStatement preparedStatement = connection.prepareStatement("DELETE * FROM Books WHERE title LIKE ?");
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Books WHERE title LIKE ?");
         preparedStatement.setString(1, input);
         return preparedStatement.executeUpdate();
         }
