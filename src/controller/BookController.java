@@ -35,6 +35,19 @@ public class BookController {
         view.printMsg(status);
     }
 
+    void deleteBook() {
+        String input = view.getInput("Title of the book to delete: ");
+        int result = 0;
+        try {
+            result = dao.deleteByTitle(input);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        String status = result > 0 ? "Book deleted" : "Book not deleted" ;
+        view.printMsg(status);
+    }
+
     void showBooksByTitle() {
         String input = view.getInput("Enter phrase to find: ");
         try {

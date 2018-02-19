@@ -11,6 +11,7 @@ public class BaseView {
         System.out.println("(1) List all the books\n"
                 + "(2) Add a new book\n"
                 + "(3) Search by title\n"
+                +"(4) Delete by title\n"
                 + "(0) Exit");
         System.out.println();
     }

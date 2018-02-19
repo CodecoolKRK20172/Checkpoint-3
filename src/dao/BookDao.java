@@ -11,5 +11,6 @@ public interface BookDao {
     int insertBook(Book book) throws SQLException;
     //List<Book> searchEverywhere(String input) throws SQLException;
     List <Book> findByTitle(String input) throws SQLException;
+    int deleteByTitle(String input) throws SQLException;
 
     }

@@ -25,6 +25,10 @@ public class RootController {
                     break;
                 case "3":
                     bookController.showBooksByTitle();
+                    break;
+                case "4":
+                    bookController.deleteBook();
+                    break;
             }
         }
     }

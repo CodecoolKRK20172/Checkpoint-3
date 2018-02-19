@@ -75,6 +75,13 @@ public class BookDaoSQLite implements BookDao{
         return fillBooksList(resultSet);
         }
 
+        public int deleteByTitle(String input) throws SQLException {
+
+        PreparedStatement preparedStatement = connection.prepareStatement("DELETE * FROM Books WHERE title LIKE ?");
+        preparedStatement.setString(1, input);
+        return preparedStatement.executeUpdate();
+        }
+
 /*        public List<Book> searchEverywhere(String input) throws SQLException {
         PreparedStatement preparedSelect = connection.prepareStatement("SELECT * from Books WHERE ISBN LIKE ? OR author LIKE ? OR title LIKE ? OR publisher LIKE ? OR publication_year LIKE ? OR price LIKE ? ");
 
