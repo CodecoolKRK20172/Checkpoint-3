@@ -34,4 +34,22 @@ public class BookController {
         String status = result > 0 ? "Book inserted" : "Book not inserted" ;
         view.printMsg(status);
     }
+
+    void showBooksByTitle() {
+        String input = view.getInput("Enter phrase to find: ");
+        try {
+            for(Book book: dao.findByTitle(input)) {
+                view.printMsg(book.getFullBookInfo());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            if(dao.findByTitle(input).isEmpty()){
+                System.out.println("No results found :(");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

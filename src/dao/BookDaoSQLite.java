@@ -24,8 +24,6 @@ public class BookDaoSQLite implements BookDao{
 
         List<Book> books = new ArrayList<>();
 
-        //int ISBN, String author, String title, String publisher, int publicationYear, int price)
-
         while (resultSet.next()) {
             int ISBN = resultSet.getInt("ISBN");
             int authorId = resultSet.getInt("author");
@@ -35,9 +33,7 @@ public class BookDaoSQLite implements BookDao{
             int price = resultSet.getInt("price");
             int typeId = resultSet.getInt("type");
 
-            //1- EBook
-            //2- PrintedBook
-            //make it shorter if there is time
+
             if(typeId == 1) {
                 EBook newEbook = new EBook(ISBN, authorId,title,publisher,publicationYear,price);
                 books.add(newEbook);
@@ -51,7 +47,7 @@ public class BookDaoSQLite implements BookDao{
 
         public List<Book> selectAllBooks() throws SQLException {
 
-            PreparedStatement preparedSelect = connection.prepareStatement("SELECT * FROM Books");
+            PreparedStatement preparedSelect = connection.prepareStatement("SELECT * FROM Books ORDER BY title ASC ");
             ResultSet resultSet = preparedSelect.executeQuery();
 
             return fillBooksList(resultSet);
@@ -69,6 +65,29 @@ public class BookDaoSQLite implements BookDao{
 
         return preparedInsert.executeUpdate();
         }
+
+        public List<Book> findByTitle(String input) throws SQLException {
+        PreparedStatement preparedSelect = connection.prepareStatement("SELECT * from Books WHERE title LIKE ?");
+
+        preparedSelect.setString(1, input);
+
+        ResultSet resultSet = preparedSelect.executeQuery();
+        return fillBooksList(resultSet);
+        }
+
+/*        public List<Book> searchEverywhere(String input) throws SQLException {
+        PreparedStatement preparedSelect = connection.prepareStatement("SELECT * from Books WHERE ISBN LIKE ? OR author LIKE ? OR title LIKE ? OR publisher LIKE ? OR publication_year LIKE ? OR price LIKE ? ");
+
+        preparedSelect.setInt(1, Integer.parseInt(input));
+        preparedSelect.setInt(2, Integer.parseInt(input));
+        preparedSelect.setString(3, input);
+        preparedSelect.setString(4, input);
+        preparedSelect.setInt(5, Integer.parseInt(input));
+        preparedSelect.setInt(6, Integer.parseInt(input));
+
+        ResultSet resultSet = preparedSelect.executeQuery();
+        return fillBooksList(resultSet);
+        }*/
 
 
 

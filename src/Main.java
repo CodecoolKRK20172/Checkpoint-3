@@ -7,6 +7,5 @@ public class Main {
         RootController rootController = new RootController();
         rootController.start();
 
-
         }
 }
